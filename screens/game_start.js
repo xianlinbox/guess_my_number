@@ -1,14 +1,18 @@
 import { View, TextInput, Button, StyleSheet } from "react-native";
+import PrimaryButton from "../components/primary_button";
 function GameStart() {
+  function reset() {}
+
+  function confirm() {}
   return (
     <View style={styles.inputContainer}>
       <TextInput style={styles.input} maxLength={2} />
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
-          <Button title="Reset" />
+          <PrimaryButton title="Reset" onPressHandler={reset} />
         </View>
         <View style={styles.button}>
-          <Button title="Confirm" />
+          <PrimaryButton title="Confirm" onPressHandler={confirm} />
         </View>
       </View>
     </View>
