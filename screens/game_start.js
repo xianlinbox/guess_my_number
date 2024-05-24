@@ -6,7 +6,7 @@ function GameStart() {
   function confirm() {}
   return (
     <View style={styles.inputContainer}>
-      <TextInput style={styles.input} maxLength={2} />
+      <TextInput style={styles.input} maxLength={2} keyboardType="number-pad" />
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
           <PrimaryButton title="Reset" onPressHandler={reset} />
