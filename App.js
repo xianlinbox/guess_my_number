@@ -13,7 +13,7 @@ export default function App() {
         imageStyle={{ opacity: 0.15 }}
       >
         <SafeAreaView>
-          <Game />
+          <Game userNumber={23} />
         </SafeAreaView>
         {/* <GameStart /> */}
       </ImageBackground>
