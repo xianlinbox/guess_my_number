@@ -20,11 +20,15 @@ function Game({ userNumber }) {
   const [currentGuessNumber, setCurrentGuessNumber] = useState(initialGuessNumber);
 
   function nextGuess(direction) {
+    if (userNumber == currentGuessNumber) {
+      Alert.alert("Congrations");
+    }
     if (
       (direction === "lower" && userNumber > currentGuessNumber) ||
       (direction === "higher" && userNumber < currentGuessNumber)
     ) {
       Alert.alert("Warning", "Please do not lie to the game", [{ text: "Sorry!", style: "cancel" }]);
+      return;
     }
 
     if (direction === "lower") {
@@ -33,6 +37,7 @@ function Game({ userNumber }) {
       min_boundary = currentGuessNumber + 1;
     }
     const nextGuessNumber = generateRandomBetween(min_boundary, max_boundary, currentGuessNumber);
+    console.log(direction, userNumber, min_boundary, max_boundary);
     setCurrentGuessNumber(nextGuessNumber);
   }
   return (
