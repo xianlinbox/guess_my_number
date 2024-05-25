@@ -1,6 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground, StyleSheet, SafeAreaView } from "react-native";
 import GameStart from "./screens/game_start";
+import Game from "./screens/game";
 
 export default function App() {
   return (
@@ -11,7 +12,10 @@ export default function App() {
         style={styles.appContainer}
         imageStyle={{ opacity: 0.15 }}
       >
-        <GameStart />
+        <SafeAreaView>
+          <Game />
+        </SafeAreaView>
+        {/* <GameStart /> */}
       </ImageBackground>
     </LinearGradient>
   );
