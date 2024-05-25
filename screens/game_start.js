@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, TextInput, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/primary_button";
-function GameStart() {
+function GameStart({ onUserConfirm }) {
   const [enteredNumber, setEnteredNumber] = useState("");
   function reset() {
     setEnteredNumber("");
@@ -14,6 +14,7 @@ function GameStart() {
         { title: "Okay", style: "default", onPress: reset },
       ]);
     }
+    onUserConfirm(inputNumber);
   }
 
   function textInputHandler(input) {
