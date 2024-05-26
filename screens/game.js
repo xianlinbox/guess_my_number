@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { View, StyleSheet, Alert } from "react-native";
 import Title from "../components/title";
 import NumberContainer from "../components/number_container";
@@ -15,14 +15,17 @@ function generateRandomBetween(min, max, exclude) {
 }
 let min_boundary = 1;
 let max_boundary = 99;
-function Game({ userNumber }) {
-  const initialGuessNumber = generateRandomBetween(min_boundary, max_boundary, userNumber);
+function Game({ userNumber, gameOverHandler }) {
+  const initialGuessNumber = generateRandomBetween(1, 100, userNumber);
   const [currentGuessNumber, setCurrentGuessNumber] = useState(initialGuessNumber);
 
-  function nextGuess(direction) {
+  useEffect(() => {
     if (userNumber == currentGuessNumber) {
-      Alert.alert("Congrations");
+      gameOverHandler();
     }
+  }, [userNumber, currentGuessNumber, gameOverHandler]);
+
+  function nextGuess(direction) {
     if (
       (direction === "lower" && userNumber > currentGuessNumber) ||
       (direction === "higher" && userNumber < currentGuessNumber)
@@ -37,7 +40,6 @@ function Game({ userNumber }) {
       min_boundary = currentGuessNumber + 1;
     }
     const nextGuessNumber = generateRandomBetween(min_boundary, max_boundary, currentGuessNumber);
-    console.log(direction, userNumber, min_boundary, max_boundary);
     setCurrentGuessNumber(nextGuessNumber);
   }
   return (
