@@ -4,6 +4,7 @@ import GameStart from "./screens/game_start";
 import { useState } from "react";
 import Game from "./screens/game";
 import GameOver from "./screens/game_over";
+import { Colors } from "./constants/colors";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
@@ -25,7 +26,7 @@ export default function App() {
     screen = <GameOver />;
   }
   return (
-    <LinearGradient style={styles.appContainer} colors={["#4e0329", "#ddb52f"]}>
+    <LinearGradient style={styles.appContainer} colors={[Colors.primary_purple, Colors.primary_yellow]}>
       <ImageBackground
         source={require("./assets/images/background.png")}
         resizeMode="cover"
