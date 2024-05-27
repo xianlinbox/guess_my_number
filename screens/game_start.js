@@ -3,6 +3,7 @@ import { View, TextInput, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/primary_button";
 import { Colors } from "../constants/colors";
 import Title from "../components/title";
+import InstructionText from "../components/instruction_text";
 function GameStart({ onUserConfirm }) {
   const [enteredNumber, setEnteredNumber] = useState("");
   function reset() {
@@ -26,6 +27,7 @@ function GameStart({ onUserConfirm }) {
     <View style={styles.rootContainer}>
       <Title>Guess My Number</Title>
       <View style={styles.inputContainer}>
+        <InstructionText>Enter a Number</InstructionText>
         <TextInput
           style={styles.input}
           maxLength={2}
