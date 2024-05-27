@@ -2,6 +2,7 @@ import { useState } from "react";
 import { View, TextInput, StyleSheet, Alert } from "react-native";
 import PrimaryButton from "../components/primary_button";
 import { Colors } from "../constants/colors";
+import Title from "../components/title";
 function GameStart({ onUserConfirm }) {
   const [enteredNumber, setEnteredNumber] = useState("");
   function reset() {
@@ -22,20 +23,23 @@ function GameStart({ onUserConfirm }) {
     setEnteredNumber(input);
   }
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.input}
-        maxLength={2}
-        keyboardType="number-pad"
-        value={enteredNumber}
-        onChangeText={textInputHandler}
-      />
-      <View style={styles.buttonContainer}>
-        <View style={styles.button}>
-          <PrimaryButton title="Reset" onPressHandler={reset} />
-        </View>
-        <View style={styles.button}>
-          <PrimaryButton title="Confirm" onPressHandler={confirm} />
+    <View style={styles.rootContainer}>
+      <Title>Guess My Number</Title>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          maxLength={2}
+          keyboardType="number-pad"
+          value={enteredNumber}
+          onChangeText={textInputHandler}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <PrimaryButton title="Reset" onPressHandler={reset} />
+          </View>
+          <View style={styles.button}>
+            <PrimaryButton title="Confirm" onPressHandler={confirm} />
+          </View>
         </View>
       </View>
     </View>
@@ -43,10 +47,13 @@ function GameStart({ onUserConfirm }) {
 }
 
 const styles = StyleSheet.create({
+  rootContainer: {
+    marginTop: 100,
+    padding: 16,
+  },
   inputContainer: {
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 100,
     marginHorizontal: 24,
     padding: 16,
     backgroundColor: Colors.secondary_purple,
