@@ -4,6 +4,7 @@ import PrimaryButton from "../components/primary_button";
 import { Colors } from "../constants/colors";
 import Title from "../components/title";
 import InstructionText from "../components/instruction_text";
+import Card from "../components/card";
 function GameStart({ onUserConfirm }) {
   const [enteredNumber, setEnteredNumber] = useState("");
   function reset() {
@@ -26,7 +27,7 @@ function GameStart({ onUserConfirm }) {
   return (
     <View style={styles.rootContainer}>
       <Title>Guess My Number</Title>
-      <View style={styles.inputContainer}>
+      <Card>
         <InstructionText>Enter a Number</InstructionText>
         <TextInput
           style={styles.input}
@@ -43,7 +44,7 @@ function GameStart({ onUserConfirm }) {
             <PrimaryButton title="Confirm" onPressHandler={confirm} />
           </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 }
@@ -51,20 +52,7 @@ function GameStart({ onUserConfirm }) {
 const styles = StyleSheet.create({
   rootContainer: {
     marginTop: 100,
-    padding: 16,
-  },
-  inputContainer: {
-    justifyContent: "center",
     alignItems: "center",
-    marginHorizontal: 24,
-    padding: 16,
-    backgroundColor: Colors.secondary_purple,
-    borderRadius: 8,
-    elevation: 4,
-    shadowColor: "black",
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 6,
-    shadowOpacity: 0.25,
   },
   input: {
     height: 50,
