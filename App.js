@@ -11,6 +11,7 @@ import { Colors } from "./constants/colors";
 
 export default function App() {
   const [userNumber, setUserNumber] = useState();
+  const [rounds, setRounds] = useState(0);
   const [gameIsOver, setGameIsOver] = useState(true);
   const [fontLoaded] = useFonts({
     "open-sans": require("./assets/fonts/OpenSans-Regular.ttf"),
@@ -32,15 +33,21 @@ export default function App() {
     setUserNumber(number);
     setGameIsOver(false);
   }
-  function gameOver() {
+  function gameOver(rounds) {
     setGameIsOver(true);
+    setRounds(rounds);
+  }
+
+  function startNewGame() {
+    setGameIsOver(true);
+    setUserNumber("");
   }
   let screen = <GameStart onUserConfirm={onUserConfirm} />;
   if (userNumber) {
     screen = <Game userNumber={userNumber} gameOverHandler={gameOver} />;
   }
   if (userNumber && gameIsOver) {
-    screen = <GameOver />;
+    screen = <GameOver startNewGame={startNewGame} userNumber={userNumber} rounds={rounds} />;
   }
   return (
     <LinearGradient
@@ -55,7 +62,6 @@ export default function App() {
         imageStyle={{ opacity: 0.15 }}
       >
         <SafeAreaView>{screen}</SafeAreaView>
-        {/* <GameStart /> */}
       </ImageBackground>
     </LinearGradient>
   );

@@ -18,13 +18,14 @@ function generateRandomBetween(min, max, exclude) {
 }
 let min_boundary = 1;
 let max_boundary = 100;
+let rounds = 0;
 function Game({ userNumber, gameOverHandler }) {
   const initialGuessNumber = generateRandomBetween(1, 100, userNumber);
   const [currentGuessNumber, setCurrentGuessNumber] = useState(initialGuessNumber);
 
   useEffect(() => {
     if (userNumber == currentGuessNumber) {
-      gameOverHandler();
+      gameOverHandler(rounds);
     }
   }, [userNumber, currentGuessNumber, gameOverHandler]);
 
@@ -36,7 +37,7 @@ function Game({ userNumber, gameOverHandler }) {
       Alert.alert("Warning", "Please do not lie to the game", [{ text: "Sorry!", style: "cancel" }]);
       return;
     }
-
+    rounds++;
     if (direction === "lower") {
       max_boundary = currentGuessNumber;
     } else {
