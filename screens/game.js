@@ -17,7 +17,7 @@ function generateRandomBetween(min, max, exclude) {
   }
 }
 let min_boundary = 1;
-let max_boundary = 99;
+let max_boundary = 100;
 function Game({ userNumber, gameOverHandler }) {
   const initialGuessNumber = generateRandomBetween(1, 100, userNumber);
   const [currentGuessNumber, setCurrentGuessNumber] = useState(initialGuessNumber);
@@ -38,9 +38,9 @@ function Game({ userNumber, gameOverHandler }) {
     }
 
     if (direction === "lower") {
-      max_boundary = currentGuessNumber - 1;
+      max_boundary = currentGuessNumber;
     } else {
-      min_boundary = currentGuessNumber + 1;
+      min_boundary = currentGuessNumber;
     }
     const nextGuessNumber = generateRandomBetween(min_boundary, max_boundary, currentGuessNumber);
     setCurrentGuessNumber(nextGuessNumber);
