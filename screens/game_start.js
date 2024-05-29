@@ -38,10 +38,10 @@ function GameStart({ onUserConfirm }) {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <PrimaryButton title="Reset" onPressHandler={reset} />
+            <PrimaryButton onPressHandler={reset}>Reset</PrimaryButton>
           </View>
           <View style={styles.button}>
-            <PrimaryButton title="Confirm" onPressHandler={confirm} />
+            <PrimaryButton onPressHandler={confirm}>Confirm</PrimaryButton>
           </View>
         </View>
       </Card>
