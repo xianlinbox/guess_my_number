@@ -1,5 +1,13 @@
 import { useState } from "react";
-import { View, TextInput, StyleSheet, Alert, useWindowDimensions } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Alert,
+  useWindowDimensions,
+  ScrollView,
+  KeyboardAvoidingView,
+} from "react-native";
 import PrimaryButton from "../components/primary_button";
 import { Colors } from "../constants/colors";
 import Title from "../components/title";
@@ -27,27 +35,31 @@ function GameStart({ onUserConfirm }) {
   }
   const marginTop = height / 6;
   return (
-    <View style={[styles.rootContainer, { marginTop: marginTop }]}>
-      <Title>Guess My Number</Title>
-      <Card>
-        <InstructionText>Enter a Number</InstructionText>
-        <TextInput
-          style={styles.input}
-          maxLength={2}
-          keyboardType="number-pad"
-          value={enteredNumber}
-          onChangeText={textInputHandler}
-        />
-        <View style={styles.buttonContainer}>
-          <View style={styles.button}>
-            <PrimaryButton onPressHandler={reset}>Reset</PrimaryButton>
-          </View>
-          <View style={styles.button}>
-            <PrimaryButton onPressHandler={confirm}>Confirm</PrimaryButton>
-          </View>
+    <ScrollView>
+      <KeyboardAvoidingView behavior="position">
+        <View style={[styles.rootContainer, { marginTop: marginTop }]}>
+          <Title>Guess My Number</Title>
+          <Card>
+            <InstructionText>Enter a Number</InstructionText>
+            <TextInput
+              style={styles.input}
+              maxLength={2}
+              keyboardType="number-pad"
+              value={enteredNumber}
+              onChangeText={textInputHandler}
+            />
+            <View style={styles.buttonContainer}>
+              <View style={styles.button}>
+                <PrimaryButton onPressHandler={reset}>Reset</PrimaryButton>
+              </View>
+              <View style={styles.button}>
+                <PrimaryButton onPressHandler={confirm}>Confirm</PrimaryButton>
+              </View>
+            </View>
+          </Card>
         </View>
-      </Card>
-    </View>
+      </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
 
